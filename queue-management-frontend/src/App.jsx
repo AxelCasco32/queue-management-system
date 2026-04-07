@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import MainScreen from './components/MainScreen/MainScreen';
+import MainScreen from './components/Mainscreen/Mainscreen';
 import OperatorPanel from './components/OperatorPanel/OperatorPanel';
 import AdminPanel from './components/AdminPanel/AdminPanel';
 import Kiosk from './components/Kiosk/Kiosk';
@@ -38,7 +38,7 @@ function SelectWindow() {
   const [windows, setWindows] = React.useState([]);
 
   React.useEffect(() => {
-    fetch('http://localhost:5001/api/windows')
+    fetch('http://localhost:5000/api/windows')
       .then(r => r.json())
       .then(data => setWindows(data.data));
   }, []);

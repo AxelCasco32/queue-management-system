@@ -3,7 +3,7 @@ import cors from 'cors';
 import { createServer } from 'http';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import SocketManager from './src/socket/SocketManager.js';
+import SocketManager from './src/socket/socketmanager.js';
 import windowRoutes from './src/routes/windowRoutes.js';
 
 dotenv.config();
