@@ -3,7 +3,6 @@ import Queue from '../models/Queue.js';
 
 class WindowController {
 
-  // Devuelve todas las ventanillas registradas ordenadas por número.
   async getAll(req, res) {
     try {
       const windows = await Window.find().sort({ numero: 1 });
@@ -13,7 +12,6 @@ class WindowController {
     }
   }
 
-  // Obtiene únicamente las ventanillas que se encuentran habilitadas.
   async getActive(req, res) {
     try {
       const windows = await Window.find({ activa: true }).sort({ numero: 1 });
@@ -23,7 +21,6 @@ class WindowController {
     }
   }
 
-  // Busca una ventanilla específica utilizando su ID.
   async getById(req, res) {
     try {
       const window = await Window.findById(req.params.id);
@@ -41,7 +38,6 @@ class WindowController {
     }
   }
 
-  // Asigna el siguiente turno disponible de la cola a la ventanilla.
   async callNext(req, res) {
     try {
       const window = await Window.findById(req.params.id);
@@ -52,10 +48,7 @@ class WindowController {
           message: 'No encontrada'
         });
 
-      // Se obtiene la cola correspondiente al día actual.
       const queue = await Queue.getTodayQueue();
-
-      // Verifica que todavía existan turnos pendientes.
       const next = queue.getNext();
 
       if (!next)
@@ -64,18 +57,16 @@ class WindowController {
           message: 'No hay más turnos'
         });
 
-      // Asigna el turno a la ventanilla y actualiza la cola.
       const { numero, esUltimo } = queue.assignTurn(window.numero);
       await queue.save();
 
-      // Guarda el turno actual y mantiene un historial de los últimos cinco llamados.
+      // solo guardo los ultimos 5, sino la lista crece para siempre
       window.turnoActual = numero;
       window.ultimosLlamados.unshift(numero);
       window.ultimosLlamados = window.ultimosLlamados.slice(0, 5);
 
       await window.save();
 
-      // Notifica en tiempo real el nuevo llamado.
       req.io.emit('turno:llamado', {
         ventanilla: window.numero,
         color: window.color,
@@ -90,7 +81,6 @@ class WindowController {
     }
   }
 
-  // Reproduce nuevamente el turno actual sin modificar la cola.
   async reCall(req, res) {
     try {
       const window = await Window.findById(req.params.id);
@@ -107,7 +97,6 @@ class WindowController {
     }
   }
 
-  // Actualiza el anuncio mostrado para una ventanilla.
   async updateAnnouncement(req, res) {
     try {
       const { anuncio } = req.body;
@@ -124,7 +113,6 @@ class WindowController {
           message: 'No encontrada'
         });
 
-      // Informa el cambio al resto de los clientes conectados.
       req.io.emit('anuncio:actualizado', {
         ventanilla: window.numero,
         anuncio: window.anuncio
@@ -137,7 +125,6 @@ class WindowController {
     }
   }
 
-  // Limpia el estado de la ventanilla y elimina su historial de llamados.
   async clear(req, res) {
     try {
       const window = await Window.findByIdAndUpdate(
@@ -157,7 +144,6 @@ class WindowController {
     }
   }
 
-  // Devuelve el estado completo de la cola del día.
   async queueStatus(req, res) {
     try {
       const queue = await Queue.getTodayQueue();
@@ -172,7 +158,6 @@ class WindowController {
     }
   }
 
-  // Reinicia la cola y deja todas las ventanillas en su estado inicial.
   async resetQueue(req, res) {
     try {
       const queue = await Queue.getTodayQueue();
@@ -202,7 +187,7 @@ class WindowController {
     }
   }
 
-  // Reinicia únicamente el contador de una ventanilla.
+  // este solo resetea el contador de UNA ventanilla, no toda la cola del dia
   async resetCounter(req, res) {
     try {
       const window = await Window.findByIdAndUpdate(
@@ -220,7 +205,6 @@ class WindowController {
           message: 'No encontrada'
         });
 
-      // Actualiza el panel para reflejar el reinicio.
       req.io.emit('turno:llamado', {
         ventanilla: window.numero,
         turno: '000',
@@ -234,7 +218,6 @@ class WindowController {
     }
   }
 
-  // Crea una nueva ventanilla utilizando los datos recibidos.
   async create(req, res) {
     try {
       const window = new Window(req.body);
@@ -251,7 +234,6 @@ class WindowController {
     }
   }
 
-  // Elimina una ventanilla del sistema.
   async delete(req, res) {
     try {
       const window = await Window.findByIdAndDelete(req.params.id);
@@ -277,7 +259,6 @@ class WindowController {
     }
   }
 
-  // Cambia el estado de una ventanilla entre activa e inactiva.
   async toggleActive(req, res) {
     try {
       const window = await Window.findById(req.params.id);
@@ -306,8 +287,7 @@ class WindowController {
 
 const controller = new WindowController();
 
-// Se enlazan todos los métodos al objeto para conservar el contexto de "this"
-// cuando son utilizados como callbacks en las rutas de Express.
+// bindeo todo porque sino "this" se pierde cuando Express llama estos metodos
 Object.getOwnPropertyNames(WindowController.prototype)
   .filter(method => method !== 'constructor')
   .forEach(method => {
