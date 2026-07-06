@@ -1,6 +1,6 @@
-#Sistema de Gestión de Turnos Hospitalarios
+# Sistema de Gestión de Turnos Hospitalarios
 
-##Tabla de Contenidos
+##  Tabla de Contenidos
 
 1. [Descripción General](#descripción-general)
 2. [Arquitectura del Sistema](#arquitectura-del-sistema)
@@ -81,7 +81,7 @@ Sistema de gestión de turnos en tiempo real para hospitales que permite:
 
 ---
 
-##Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 ### **Backend:**
 - **Node.js** v18+ - Runtime de JavaScript
@@ -108,7 +108,7 @@ Sistema de gestión de turnos en tiempo real para hospitales que permite:
 
 ---
 
-##Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 queue-management-system/
@@ -172,7 +172,7 @@ queue-management-system/
 
 ---
 
-##Instalación y Configuración
+## Instalación y Configuración
 
 ### **Prerrequisitos:**
 
@@ -265,7 +265,7 @@ Deberías ver la pantalla principal
 
 ---
 
-##Guía de Uso
+## Guía de Uso
 
 ### **1. Pantalla Principal (Sala de Espera)**
 
@@ -346,7 +346,7 @@ Deberías ver la pantalla principal
 
 ---
 
-## 🔌 API Reference
+##  API Reference
 
 ### **Base URL:** `http://localhost:5000/api`
 
@@ -612,7 +612,7 @@ curl -X POST http://localhost:5000/api/ventanillas/cola/resetear
 
 ---
 
-## 🔧 Mantenimiento
+## Mantenimiento
 
 ### **Reseteo Diario Automático:**
 
@@ -650,17 +650,17 @@ POST /api/ventanillas/.../llamar-siguiente
 
 ---
 
-## 📊 Estadísticas y Métricas
+## Estadísticas y Métricas
 
 El sistema registra:
-- ✅ Cantidad de turnos llamados por día
-- ✅ Turnos por ventanilla
-- ✅ Tiempo promedio de atención (calculable desde timestamps)
-- ✅ Historial completo de turnos
+- Cantidad de turnos llamados por día
+- Turnos por ventanilla
+- Tiempo promedio de atención (calculable desde timestamps)
+- Historial completo de turnos
 
 ---
 
-## 🔐 Seguridad
+## Seguridad
 
 ### **Recomendaciones para Producción:**
 
@@ -682,7 +682,7 @@ El sistema registra:
 
 ---
 
-## 📝 Notas Adicionales
+## Notas Adicionales
 
 ### **Límites del Sistema:**
 - Turnos por día: 100 (se resetea automáticamente)
@@ -697,7 +697,7 @@ El sistema registra:
 
 ---
 
-## 👥 Soporte y Contacto
+## Soporte y Contacto
 
 Para soporte técnico o consultas:
 - Documentación: Este archivo
@@ -710,7 +710,7 @@ Para soporte técnico o consultas:
 
 ---
 
-## 🎯 Roadmap Futuro
+## Roadmap Futuro
 
 Funcionalidades planeadas:
 - [ ] Autenticación de operadores
@@ -724,5 +724,5 @@ Funcionalidades planeadas:
 ---
 
 **Versión:** 1.0.0  
-**Última actualización:** Mayo 2026  
+**Última actualización:** Julio 2026  
 **Desarrollado por: Axel Guillermo Casco 41687533
