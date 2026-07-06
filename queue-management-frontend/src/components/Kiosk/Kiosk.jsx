@@ -9,13 +9,13 @@ const Kiosk = () => {
   const [countdown, setCountdown] = useState(6);
   const [currentTime, setCurrentTime] = useState(new Date());
  
-  // ===== RELOJ EN TIEMPO REAL =====
+  //RELOJ EN TIEMPO REAl
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
  
-  // ===== COUNTDOWN Y VUELTA AL HOME =====
+  //COUNTDOWN Y VUELTA AL HOME 
   useEffect(() => {
     if (step !== 'success') return;
     setCountdown(6);
@@ -44,7 +44,7 @@ const Kiosk = () => {
  
   const formatTurn = (num) => String(num).padStart(3, '0');
  
-  // ===== SACAR TURNO =====
+  //SACAR TURNO
   const handleGetTurn = async () => {
     if (loading) return;
     setLoading(true);
@@ -69,7 +69,7 @@ const Kiosk = () => {
     setAssignedTurn(null);
   };
  
-  // ===== PANTALLA MI SALUD DIGITAL =====
+  //PANTALLA MI SALUD DIGITAL
   if (step === 'misalud') {
     return (
       <div style={styles.root}>
@@ -88,7 +88,7 @@ const Kiosk = () => {
     );
   }
  
-  // ===== PANTALLA ÉXITO =====
+  //PANTALLA ÉXITO
   if (step === 'success') {
     return (
       <div style={styles.root}>
@@ -119,7 +119,7 @@ const Kiosk = () => {
     );
   }
  
-  // ===== PANTALLA ERROR =====
+  //PANTALLA ERROR
   if (step === 'error') {
     return (
       <div style={styles.root}>
@@ -134,7 +134,7 @@ const Kiosk = () => {
     );
   }
  
-  // ===== PANTALLA HOME =====
+  //PANTALLA HOME
   return (
     <div style={styles.root}>
  
@@ -198,7 +198,7 @@ const Kiosk = () => {
   );
 };
  
-// ===================== ESTILOS =====================
+// style
 const styles = {
   root: {
     width: '100vw',

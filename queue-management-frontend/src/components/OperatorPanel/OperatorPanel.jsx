@@ -108,7 +108,7 @@ const OperatorPanel = () => {
   return (
     <div style={styles.root}>
 
-      {/* ===== MODAL CONFIRMACIÓN ===== */}
+      {/*MODAL CONFIRMACION*/}
       {confirmReset && (
         <div style={styles.modalOverlay}>
           <div style={styles.modalCard}>
@@ -209,7 +209,7 @@ const OperatorPanel = () => {
   );
 };
 
-// ===================== ESTILOS =====================
+
 const styles = {
   root: {
     minHeight: '100vh',

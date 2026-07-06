@@ -13,18 +13,18 @@ const MainScreen = () => {
   const [loading, setLoading] = useState(true);
   const [started, setStarted] = useState(false);
 
-  // ===== CARGA INICIAL =====
+  //CARGA INICIAL 
   useEffect(() => {
     loadWindows();
   }, []);
 
-  // ===== REPRODUCIR SONIDO =====
+  //REPRODUCIR SONIDO
   const playSound = () => {
     const audio = new Audio('/sounds/llamada.mp3');
     audio.play().catch((err) => console.warn('Audio bloqueado:', err));
   };
 
-  // ===== SOCKETS =====
+  //sOCKETS
   useEffect(() => {
     socketService.connect();
     socketService.joinScreen();
@@ -83,7 +83,7 @@ const MainScreen = () => {
     setStarted(true);
   };
 
-  // ===== PANTALLA DE CARGA =====
+  //PANTALLA DE CARGA
   if (loading) {
     return (
       <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-br from-cyan-600 via-teal-500 to-cyan-700">
@@ -94,7 +94,7 @@ const MainScreen = () => {
     );
   }
 
-  // ===== PANTALLA DE INICIO =====
+  //PANTALLA DE INICIO
   if (!started) {
     return (
       <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-br from-cyan-700 via-teal-600 to-cyan-800">
@@ -111,12 +111,12 @@ const MainScreen = () => {
     );
   }
 
-  // ===== Anuncios: tomar de las ventanillas que tienen anuncio =====
+  //Anuncios: tomar de las ventanillas que tienen anuncio
   const announcements = windows
     .filter((w) => w.anuncio)
     .map((w) => `Ventanilla ${w.numero}: ${w.anuncio}`);
 
-  // ===== PANTALLA PRINCIPAL =====
+  //PANTALLA PRINCIPAL
   return (
     <div className="h-screen bg-gradient-to-br from-cyan-600 via-teal-500 to-cyan-700 overflow-hidden flex flex-col">
 

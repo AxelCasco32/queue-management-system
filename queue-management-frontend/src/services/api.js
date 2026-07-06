@@ -21,7 +21,7 @@ api.interceptors.request.use(
   }
 );
 
-// ===== SERVICIOS DE VENTANILLAS =====
+//SERVICIOS DE VENTANILLAS 
 export const windowsAPI = {
   // Obtener todas las ventanillas
   getAll: () => api.get('/windows'),
@@ -58,7 +58,7 @@ export const windowsAPI = {
   toggleActive: (id) => api.patch(`/windows/${id}/toggle`),
 };
 
-// ===== SERVICIOS DE COLA =====
+
 
 export const queueAPI = {
   getStatus: () => api.get('/windows/queue/status'),

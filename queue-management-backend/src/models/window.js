@@ -34,13 +34,8 @@ const windowSchema = new mongoose.Schema({
 }, { timestamps: true }); 
 
 
-// ===== MÉTODOS DE INSTANCIA =====
 
-/**
- * Asigna un turno a la ventanilla y lo agrega al historial de últimos llamados.
- * Mantiene un máximo de 10 turnos en el historial (los más recientes primero).
- * Se usa cuando el operador llama un turno desde su panel.
- */
+
 windowSchema.methods.assignTurn = function(numeroTurno) {
   this.turnoActual = numeroTurno; 
   
@@ -52,19 +47,13 @@ windowSchema.methods.assignTurn = function(numeroTurno) {
   return this.save();
 };
 
-/**
- * Actualiza el texto del anuncio visible en la pantalla pública.
- * El anuncio tiene un máximo de 200 caracteres (definido en el schema).
- */
+
 windowSchema.methods.updateAnnouncement = function(texto) {
   this.anuncio = texto;
   return this.save();
 };
 
-/**
- * Limpia el estado de la ventanilla: resetea el turno actual a '000',
- * borra el historial de llamados y elimina el anuncio activo.
- * Se usa desde el panel admin o al resetear la cola completa.
+/* este metodo limpia desde admin los datos de la ventanilla, el numero, los ultimos llamados y los anuncios
  */
 windowSchema.methods.clear = function() {
   this.turnoActual = '000';  

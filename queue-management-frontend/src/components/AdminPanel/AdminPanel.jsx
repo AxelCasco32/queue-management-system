@@ -48,7 +48,7 @@ const AdminPanel = () => {
     setTimeout(() => setSuccessMessage(''), 3000);
   };
 
-  // ===== CREAR VENTANILLA =====
+  // CREAR VENTANILLA 
   const handleCreateWindow = async () => {
     setFormError('');
     if (!newForm.numero) return setFormError('El número es obligatorio');
@@ -74,7 +74,7 @@ const AdminPanel = () => {
     }
   };
 
-  // ===== ELIMINAR VENTANILLA =====
+  // ELIMINAR VENTANILLA 
   const handleDeleteWindow = async () => {
     if (!confirmDelete) return;
     try {
@@ -87,7 +87,7 @@ const AdminPanel = () => {
     }
   };
 
-  // ===== TOGGLE ACTIVA =====
+  // TOGGLE ACTIVA 
   const handleToggleWindow = async (id, currentActive) => {
     try {
       await windowsAPI.toggleActive(id);
@@ -98,7 +98,7 @@ const AdminPanel = () => {
     }
   };
 
-  // ===== RESETEAR COLA =====
+  // RESETEAR COLA
   const handleResetQueue = async () => {
     try {
       await queueAPI.reset();
@@ -121,7 +121,7 @@ const AdminPanel = () => {
     reader.readAsDataURL(file);
   };
 
-  // ===== ESTADÍSTICAS =====
+  //  ESTADÍSTICAS 
   const totalTurnos = queue?.turnosAsignados?.length || 0;
   const turnosPendientes = queue?.turnos?.filter(t => t.estado === 'pendiente')?.length || 0;
   const turnosAtendidos = queue?.turnos?.filter(t => t.estado === 'asignado')?.length || 0;
@@ -138,7 +138,7 @@ const AdminPanel = () => {
   return (
     <div style={styles.root}>
 
-      {/* ===== MODAL RESET COLA ===== */}
+      {/* MODAL RESET COLA*/}
       {confirmReset && (
         <div style={styles.modalOverlay}>
           <div style={styles.modalCard}>
@@ -155,7 +155,7 @@ const AdminPanel = () => {
         </div>
       )}
 
-      {/* ===== MODAL ELIMINAR VENTANILLA ===== */}
+      {/*MODAL ELIMINAR VENTANILL */}
       {confirmDelete && (
         <div style={styles.modalOverlay}>
           <div style={styles.modalCard}>
@@ -172,7 +172,7 @@ const AdminPanel = () => {
         </div>
       )}
 
-      {/* ===== TOAST ÉXITO ===== */}
+      {/*TOAST ÉXITO */}
       {successMessage && (
         <div style={styles.toast}>✅ {successMessage}</div>
       )}
@@ -206,7 +206,7 @@ const AdminPanel = () => {
           </nav>
         </div>
 
-        {/* ===== CONTENIDO PRINCIPAL ===== */}
+        {/* CONTENIDO PRINCIPAL */}
         <div style={styles.main}>
 
           {/* ===== ESTADÍSTICAS ===== */}
@@ -253,7 +253,7 @@ const AdminPanel = () => {
             </div>
           )}
 
-          {/* ===== GESTIÓN VENTANILLAS ===== */}
+          {/* GESTIÓN VENTANILLAS */}
           {activeSection === 'ventanillas' && (
             <div>
               <h1 style={styles.pageTitulo}>Gestión de Ventanillas</h1>
@@ -357,7 +357,7 @@ const AdminPanel = () => {
             </div>
           )}
 
-          {/* ===== CAMBIAR LOGO ===== */}
+          {/* CAMBIAR LOGO */}
           {activeSection === 'logo' && (
             <div>
               <h1 style={styles.pageTitulo}>Cambiar Logo</h1>
@@ -378,7 +378,7 @@ const AdminPanel = () => {
             </div>
           )}
 
-          {/* ===== GESTIÓN COLA ===== */}
+          {/*GESTIÓN COLA*/}
           {activeSection === 'cola' && (
             <div>
               <h1 style={styles.pageTitulo}>Gestión de Cola</h1>
@@ -419,7 +419,7 @@ const AdminPanel = () => {
   );
 };
 
-// ===================== ESTILOS =====================
+// ESTILOS
 const styles = {
   root: {
     minHeight: '100vh',

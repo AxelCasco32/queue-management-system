@@ -19,15 +19,15 @@ class SocketService {
       });
 
       this.socket.on('connect', () => {
-        console.log('✅ Socket conectado:', this.socket.id);
+        console.log('Socket conectado:', this.socket.id);
       });
 
       this.socket.on('disconnect', () => {
-        console.log('❌ Socket desconectado');
+        console.log('Socket desconectado');
       });
 
       this.socket.on('connect_error', (error) => {
-        console.error('❌ Error de conexión:', error);
+        console.error('Error de conexión:', error);
       });
     }
 
