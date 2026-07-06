@@ -1,6 +1,6 @@
-# 🏥 Sistema de Gestión de Turnos Hospitalarios
+#Sistema de Gestión de Turnos Hospitalarios
 
-## 📋 Tabla de Contenidos
+##Tabla de Contenidos
 
 1. [Descripción General](#descripción-general)
 2. [Arquitectura del Sistema](#arquitectura-del-sistema)
@@ -16,22 +16,22 @@
 
 ---
 
-## 📖 Descripción General
+## Descripción General
 
 Sistema de gestión de turnos en tiempo real para hospitales que permite:
 
-- ✅ Gestión automática de cola de turnos (1-100, con reinicio automático)
-- ✅ Múltiples ventanillas de atención simultáneas
-- ✅ Pantalla pública para sala de espera
-- ✅ Panel de operador para cada ventanilla
-- ✅ Anuncios personalizados por ventanilla
-- ✅ Sincronización en tiempo real vía WebSocket
-- ✅ Historial de turnos llamados
-- ✅ Sistema de audio para notificaciones
+- Gestión automática de cola de turnos (1-100, con reinicio automático)
+- Múltiples ventanillas de atención simultáneas
+- Pantalla pública para sala de espera
+- Panel de operador para cada ventanilla
+- Anuncios personalizados por ventanilla
+- Sincronización en tiempo real vía WebSocket
+- Historial de turnos llamados
+- Sistema de audio para notificaciones
 
 ---
 
-## 🏗️ Arquitectura del Sistema
+## Arquitectura del Sistema
 
 ### **Componentes Principales:**
 
@@ -81,7 +81,7 @@ Sistema de gestión de turnos en tiempo real para hospitales que permite:
 
 ---
 
-## 💻 Tecnologías Utilizadas
+##Tecnologías Utilizadas
 
 ### **Backend:**
 - **Node.js** v18+ - Runtime de JavaScript
@@ -108,7 +108,7 @@ Sistema de gestión de turnos en tiempo real para hospitales que permite:
 
 ---
 
-## 📁 Estructura del Proyecto
+##Estructura del Proyecto
 
 ```
 queue-management-system/
@@ -172,7 +172,7 @@ queue-management-system/
 
 ---
 
-## 🚀 Instalación y Configuración
+##Instalación y Configuración
 
 ### **Prerrequisitos:**
 
@@ -265,7 +265,7 @@ Deberías ver la pantalla principal
 
 ---
 
-## 📖 Guía de Uso
+##Guía de Uso
 
 ### **1. Pantalla Principal (Sala de Espera)**
 
@@ -274,13 +274,13 @@ Deberías ver la pantalla principal
 **Descripción:** Pantalla pública que muestra los turnos actuales en cada ventanilla.
 
 **Características:**
-- ✅ Muestra turnos actuales de todas las ventanillas
-- ✅ Colores diferenciados por ventanilla (verde, azul, rojo)
-- ✅ Sección de mensajes informativos
-- ✅ Últimos 5 turnos llamados
-- ✅ Anuncios personalizados por ventanilla
-- ✅ Actualización automática en tiempo real
-- ✅ Sonido de notificación al llamar turno
+- Muestra turnos actuales de todas las ventanillas
+- Colores diferenciados por ventanilla (verde, azul, rojo)
+- Sección de mensajes informativos
+- Últimos 5 turnos llamados
+- Anuncios personalizados por ventanilla
+- Actualización automática en tiempo real
+- Sonido de notificación al llamar turno
 
 **Optimizada para:** Pantalla de 43" (1920x1080)
 
@@ -453,7 +453,7 @@ Resetear la cola manualmente (volver a turno 001).
 
 ---
 
-## 🗄️ Base de Datos
+## Base de Datos
 
 ### **Colección: Ventanillas (windows)**
 
@@ -503,7 +503,7 @@ Resetear la cola manualmente (volver a turno 001).
 
 ---
 
-## 📡 Comunicación en Tiempo Real
+## Comunicación en Tiempo Real
 
 ### **Eventos Socket.IO**
 
@@ -550,7 +550,7 @@ socket.on('ventanilla:limpiada', (data) => {
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### **Backend no inicia:**
 
@@ -589,8 +589,8 @@ cors({ origin: process.env.CORS_ORIGIN })
 ```javascript
 // En consola del navegador (F12)
 // Buscar:
-✅ Socket conectado: xyz123
-📺 Conectado como pantalla pública
+Socket conectado: xyz123
+Conectado como pantalla pública
 
 // Si no aparece, verificar:
 - Backend corriendo
@@ -620,7 +620,7 @@ La cola se resetea automáticamente al llegar al turno 100.
 
 **Verificar en los logs:**
 ```
-🔄 Turno 100 alcanzado. Cola se reiniciará.
+ Turno 100 alcanzado. Cola se reiniciará.
 ```
 
 ---
@@ -641,9 +641,9 @@ mongorestore --db llamador_turnos ./backup/llamador_turnos
 
 ```bash
 # Backend logs (en consola)
-✅ MongoDB conectado
-🚀 http://localhost:5000
-📡 Socket.IO listo
+ MongoDB conectado
+ http://localhost:5000
+ Socket.IO listo
 POST /api/ventanillas/.../llamar-siguiente
 ⚡ Turno 005 asignado a ventanilla 5
 ```
